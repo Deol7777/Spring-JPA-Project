@@ -1,5 +1,6 @@
 package com.noor.spring.data.jpa.tutorial.repository;
 
+import com.noor.spring.data.jpa.tutorial.entity.Guardian;
 import com.noor.spring.data.jpa.tutorial.entity.Student;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -7,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class StudentRepositoryTest {
@@ -20,16 +19,34 @@ class StudentRepositoryTest {
             .emailId("deol@gmail.com")
             .firstName("Someone")
             .lastName("Singh")
-            .guardianName("Vadaa")
-            .guardianEmail("vd@thanedar.com")
-            .guardianMobile("890890890")
+//            .guardianName("Vadaa")
+//            .guardianEmail("vd@thanedar.com")
+//            .guardianMobile("890890890")
             .build();
+
+    Guardian guardingJ = new Guardian("Baapu", "ng@yahoo.ca", "987987987");
+
+    Student student2 = Student.builder()
+            .firstName("Jarnail")
+            .emailId("jarnails@yh.ca")
+            .lastName("singh")
+            .guardian(guardingJ)
+            .build();
+
+    //Why do I have to put in a long value when it's not required in the builder way?
+    //Student student3 = new Student(2L,"Jarnail", "singh", "jarnails@yh.ca", guardinJ);
 
     @Disabled
     @Test
     public void saveStudent()
     {
         studentRepository.save(student);
+    }
+
+    @Test
+    public void saveStudentwithGuardian()
+    {
+        studentRepository.save(student2);
     }
 
     @Test

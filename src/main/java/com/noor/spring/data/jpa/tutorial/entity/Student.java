@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.security.Guard;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -40,7 +42,7 @@ public class Student {
             name = "email_address",
             nullable = false)
     private String emailId;
-    private String guardianName;
-    private String guardianEmail;
-    private String guardianMobile;
+
+    @Embedded
+    private Guardian guardian;
 }
