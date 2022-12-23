@@ -56,5 +56,24 @@ class StudentRepositoryTest {
         System.out.println(studentList);
     }
 
+    @Test
+    public void findByFirstName()
+    {
+        List<Student> studentList = studentRepository.findByFirstName("jarnail");
+        System.out.println(studentList);
+    }
 
+    @Test
+    public void findByFirstNameContaining()
+    {
+        List<Student> studentList = studentRepository.findByFirstNameContaining("n");
+        System.out.println(studentList);
+    }
+
+    @Test
+    public void findByEmailid()
+    {
+        List<Student> studentList = studentRepository.customfindByEmailIdIgnoreCase("deol@gmail.com");
+        System.out.println(studentList);
+    }
 }
