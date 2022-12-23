@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -76,4 +77,11 @@ class StudentRepositoryTest {
         List<Student> studentList = studentRepository.customfindByEmailIdIgnoreCase("deol@gmail.com");
         System.out.println(studentList);
     }
+
+    @Test
+    public void updateStudentNameByEmailId()
+    {
+        studentRepository.updateStudentNameByEmailId("Gurnoor", "deol@gmail.com");
+    }
+
 }
